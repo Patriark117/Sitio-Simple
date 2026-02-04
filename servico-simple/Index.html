@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Servicio simple</title>
+</head>
+<body>
+
+<button onclick="obtenerNombre()">Obtener nombre</button>
+
+<script>
+function obtenerNombre() {
+  fetch('servicio.php')
+    .then(response => response.json())
+    .then(data => {
+      alert("Nombre del estudiante: " + data.nombre);
+    })
+    .catch(error => {
+      alert("Error al obtener el nombre");
+    });
+}
+</script>
+
+</body>
+</html>
