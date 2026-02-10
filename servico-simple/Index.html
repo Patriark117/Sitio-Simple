@@ -9,17 +9,22 @@
 <button onclick="obtenerNombre()">Obtener nombre</button>
 
 <script>
-function obtenerNombre() {
-  fetch('servicio.php')
-    .then(response => response.json())
-    .then(data => {
-      alert("Nombre del estudiante: " + data.nombre);
-    })
-    .catch(error => {
+async function obtenerNombre() {
+  try{ 
+    const response = await fetch('servicio.php')
+      if (!response.ok) {
+        throw new Error("Error en la repuesta del servidor.")
+      }
+        const data = await response.json();
+        alert("Nombre del estudiante: "+ data.nombre);
+    
+   } catch(error){ 
       alert("Error al obtener el nombre");
+      console.error(error);
     });
 }
 </script>
 
 </body>
+
 </html>
